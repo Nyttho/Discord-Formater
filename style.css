@@ -1,0 +1,220 @@
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #fffae6;
+  --secondary: #ff9f66;
+  --tercary: #ff5f00;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  padding: 20px;
+  background: var(--primary);
+}
+
+h1 {
+  font-size: 3rem;
+  margin: 1rem 0 2rem;
+}
+
+.app {
+  width: 90vw;
+  display: flex;
+  justify-content: space-between;
+  background: #ebeaea;
+  font-size: 1.5rem;
+  background: var(--primary);
+}
+
+.box {
+  width: 45%;
+  min-height: 100%;
+  padding: 0.5rem;
+  background: var(--secondary);
+  border-radius: 15px;
+  border: 2px solid var(--tercary);
+}
+
+.settings-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 1rem;
+}
+
+.preview-box {
+  padding: 0.5rem;
+  position: relative;
+}
+
+.copy-box {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  right: 15px;
+  top: 25px;
+  cursor: pointer;
+}
+
+input {
+  width: 50%;
+  padding: 1rem;
+  outline: none;
+}
+
+label {
+  text-decoration: underline;
+  margin: 1rem 0;
+}
+
+.element:not(.activation-input-element.element) {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem 0;
+}
+
+.activation-btn {
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  background: var(--primary);
+  outline: none;
+  border-radius: 5px;
+  font-weight: 700;
+  border: none;
+  margin: auto 0;
+  font-size: 1.3rem;
+}
+
+.activation-btn:focus,
+.activation-btn:hover {
+  background: var(--tercary);
+  color: white;
+}
+
+.activation-input-element {
+  display: flex;
+  gap: 10px;
+  margin: 0.5rem 0;
+}
+
+.price-element,
+.marge-element {
+  display: flex;
+}
+
+.devise-container,
+.margin-type-container {
+  display: flex;
+  margin-left: 1rem;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 10px;
+}
+
+.devise-container label,
+.margin-type-container label {
+  text-decoration: none;
+}
+
+.central-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.formater {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 1rem;
+}
+
+.formater p {
+  color: #000;
+  font-size: 2rem;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: color 0.6s, top 0.4s, transform 0.4s;
+}
+
+.arrow-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
+}
+
+.grow-effect {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--tercary);
+  background-clip: text;
+  color: transparent;
+  transition: right 0.6s cubic-bezier(0.17, 1.4, 0.78, 1.3);
+  font-size: 3rem;
+}
+
+.formater:hover .grow-effect {
+  right: 0%;
+}
+
+.formater:hover p {
+  color: var(--tercary);
+  top: 0;
+  transform: translateY(0);
+}
+
+textarea {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  padding: 1rem;
+  font-size: 2rem;
+  border-radius: 12px;
+  outline: none;
+  text-transform: capitalize;
+}
+
+.copy-box p {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.5s;
+}
+.copy-box p.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/d220321d0c.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>Formateur Discord</title>
+  </head>
+  <body>
+    <h1>Discord Formater</h1>
+    <div class="app">
+      <!--------------------- left box ------------------>
+
+      <div class="settings-box box">
+        <div class="element">
+          <label for="produit">Produit :</label>
+          <input type="text" id="produit" name="produit" required />
+        </div>
+        <div class="element">
+          <label for="date">Date :</label>
+          <input type="text" id="date" name="date" required />
+        </div>
+        <div class="element">
+          <label for="prix">Prix :</label>
+          <div class="price-element">
+            <input type="number" id="prix" name="prix" required />
+            <div class="devise-container">
+              <div>
+                <input type="radio" id="€" name="devise" value="€" checked />
+                <label for="€">€</label>
+              </div>
+              <div>
+                <input type="radio" id="$" name="devise" value="$" />
+                <label for="$">$</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="element">
+          <label for="marge">Marge :</label>
+          <div class="marge-element">
+            <input type="number" id="marge" name="marge" value="25" required />
+            <div class="margin-type-container">
+              <div>
+                <input
+                  type="radio"
+                  id="percentage"
+                  name="margin-type"
+                  value="%"
+                  checked
+                />
+                <label for="percentage">%</label>
+              </div>
+              <div>
+                <input type="radio" id="fixe" name="margin-type" value="€" />
+                <label for="fixe" class="marge-symbol">€</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <label for="activations">Activations :</label>
+
+        <div class="activation-input-container element">
+          <div class="activation-input-element element">
+            <input type="text" id="activations" name="activations" required />
+            <button class="activation-btn">+</button>
+          </div>
+        </div>
+        <div class="element">
+          <label for="script">Script :</label>
+          <input type="text" id="script" name="script" />
+        </div>
+        <div class="element">
+          <label for="brief">Brief :</label>
+          <input type="text" id="brief" name="brief" />
+        </div>
+        <div class="element">
+          <label for="assets">Assets :</label>
+          <input type="text" id="assets" name="assets" />
+        </div>
+      </div>
+
+      <!--------------------- central box --------------------->
+
+      <div class="central-box">
+        <div class="formater">
+          <p>Formater</p>
+          <div class="arrow-container">
+            <div class="grow-effect">
+              <i class="fa-solid fa-right-long"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!----------------------------- right box ----------------------------->
+
+      <div class="preview-box box">
+        <div class="copy-box">
+          <i class="fa-solid fa-copy"></i>
+          <p>Copié</p>
+        </div>
+        <textarea name="formated-text" id="formated-text"></textarea>
+      </div>
+    </div>
+  </body>
+</html>
