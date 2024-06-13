@@ -142,47 +142,37 @@ function getDatas() {
         }
     });
 
-    // Get the symbol of the selected devise
-    const deviseSymbol = devise === "€" ? "€" : "$";
-
     // Calculate budget based on margin type
     if (marginType === "%") {
-        datas["budget"] = `${(prix - (prix * (marge / 100))).toFixed(2)}${deviseSymbol}`;
+        datas["budget"] = `${(prix - (prix * (marge / 100))).toFixed(2)}`;
     } else {
-        datas["budget"] = `${(prix - marge).toFixed(2)}${deviseSymbol}`;
+        datas["budget"] = `${(prix - marge).toFixed(2)}`;
     }
 
     // Add formatted text if textarea is filled
     if (textarea.value.trim() !== "") {
         datas["formated-text"] = textarea.value.trim();
     }
+    return datas
 
-    // Reorder the properties to ensure "budget" is in the third position
-    const orderedDatas = {};
-    let i = 0;
-    for (const key in datas) {
-        if (key === "budget") {
-            orderedDatas[key] = datas[key];
-        } else {
-            orderedDatas[key] = datas[key];
-            i++;
-        }
-    }
-    console.log(orderedDatas);
-    return orderedDatas;
 }
-
-
 
 function formatToDiscord() {
     const textArea = document.querySelector("textarea");
+    const devises = document.querySelectorAll('input[name="devise"]')
+    let devise;
+    devises.forEach(radio => {
+        if (radio.checked) {
+            devise = radio.value
+        }
+    })
     textArea.value = "";
     const datas = getDatas();
 
     // Créer des constantes pour chaque ligne de texte si elles existent dans l'objet datas
     const productLine = datas.produit ? `**Produit:** ${datas.produit}\n` : '';
     const dateLine = datas.date ? `**Date:** ${datas.date}\n` : '';
-    const budgetLine = datas.budget ? `**Budget:** ${datas.budget}\n` : '';
+    const budgetLine = !isNaN(datas.budget) ? `**Budget:** ${datas.budget}${devise}\n` : '';
     const activationsLine = datas.activations ? `**Activations:**\n${datas.activations.map(activation => `- ${activation}`).join('\n')}\n` : '';
     const scriptLine = datas.script ? `**Script:** ${datas.script}\n` : '';
     const briefLine = datas.brief ? `**Brief:** ${datas.brief}\n` : '';
@@ -194,20 +184,6 @@ function formatToDiscord() {
 
     textArea.value = text; // Définissez la valeur de la zone de texte
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -237,17 +213,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initial detection of selected values
     const initialDevise = getSelectedValue('devise');
 
-    const initialMarginType = getSelectedValue('margin-type');
-
     // Update margin symbol based on initial devise
     updateMarginSymbol(initialDevise);
 
     // Add event listeners for changes
     addChangeListeners('devise', (value) => {
         updateMarginSymbol(value);
-    });
-
-    addChangeListeners('margin-type', (value) => {
-        console.log(`Selected margin type: ${value}`);
     });
 });
