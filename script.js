@@ -114,7 +114,6 @@ function getDatas() {
             // Check if the radio button is checked
             if (input.checked) {
                 devise = input.value; // Get the value of the checked radio button
-                console.log("Devise sélectionnée :", devise); // Log the selected currency
             }
             return;
         }
@@ -124,7 +123,6 @@ function getDatas() {
             // Check if the radio button is checked
             if (input.checked) {
                 marginType = value; // Get the value of the checked radio button
-                console.log("Type de marge sélectionné :", marginType); // Log the selected margin type
             }
             return;
         }
@@ -170,7 +168,7 @@ function getDatas() {
             i++;
         }
     }
-
+    console.log(orderedDatas);
     return orderedDatas;
 }
 
@@ -189,9 +187,10 @@ function formatToDiscord() {
     const scriptLine = datas.script ? `**Script:** ${datas.script}\n` : '';
     const briefLine = datas.brief ? `**Brief:** ${datas.brief}\n` : '';
     const assetsLine = datas.assets ? `**Assets:** ${datas.assets}\n` : '';
+    const trackingList = datas.trackingList ? `**Tracking List:** ${datas.trackingList}\n` : '';
 
     // Concaténer les lignes dans l'ordre souhaité
-    const text = productLine + dateLine + budgetLine + activationsLine + scriptLine + briefLine + assetsLine;
+    const text = productLine + dateLine + budgetLine + activationsLine + scriptLine + briefLine + assetsLine + trackingList;
 
     textArea.value = text; // Définissez la valeur de la zone de texte
 }
@@ -237,17 +236,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Initial detection of selected values
     const initialDevise = getSelectedValue('devise');
-    console.log(`Initial selected devise: ${initialDevise}`);
 
     const initialMarginType = getSelectedValue('margin-type');
-    console.log(`Initial selected margin type: ${initialMarginType}`);
 
     // Update margin symbol based on initial devise
     updateMarginSymbol(initialDevise);
 
     // Add event listeners for changes
     addChangeListeners('devise', (value) => {
-        console.log(`Selected devise: ${value}`);
         updateMarginSymbol(value);
     });
 
