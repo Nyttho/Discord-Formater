@@ -177,7 +177,7 @@ function formatToDiscord() {
     const scriptLine = datas.script ? `**Script:** ${datas.script}\n` : '';
     const briefLine = datas.brief ? `**Brief:** ${datas.brief}\n` : '';
     const assetsLine = datas.assets ? `**Assets:** ${datas.assets}\n` : '';
-    const trackingList = datas.trackingList ? `**Tracking List:** ${datas.trackingList}\n` : '';
+    const trackingList = datas.trackingLink ? `**Tracking Link:** ${datas.trackingLink}\n` : '';
 
     // Concaténer les lignes dans l'ordre souhaité
     const text = productLine + dateLine + budgetLine + activationsLine + scriptLine + briefLine + assetsLine + trackingList;
